@@ -1,0 +1,6 @@
+FROM debian:bookworm-slim
+WORKDIR /app
+COPY server-go /app/server-go
+RUN chmod +x /app/server-go
+EXPOSE 3000
+ENTRYPOINT ["/app/server-go"]

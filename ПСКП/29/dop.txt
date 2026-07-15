@@ -1,0 +1,29 @@
+// во-первых ребятки нам нужно поставить redis локально
+// это самый простой, быстрый и рабочий выриантик
+// (ну если хотите парится, то можно и с облачным помучаться)
+
+//короче ставим в докере 
+docker run --name redis-exam -p 6379:6379 -d redis
+
+// все и теперь спокойненько работаем с локальным redis
+
+// запросики
+
+POST http://localhost:3000/faculty
+{
+  "key": "faculty:FIT",
+  "value": "Faculty of Information Technologies"
+}
+
+
+GET http://localhost:3000/faculty?key=faculty:FIT
+
+
+PUT http://localhost:3000/faculty
+{
+  "key": "faculty:FIT",
+  "value": "Updated Faculty"
+}
+
+
+DELETE http://localhost:3000/faculty?key=faculty:FIT

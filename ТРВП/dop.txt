@@ -1,0 +1,30 @@
+// Логи nginx
+в папке /var/log/nginx
+
+// главный конфиг nginx
+файлик /etc/nginx/nginx.conf
+
+
+// установленные модули nginx
+ls /etc/nginx/modules-enabled
+
+
+// список сервисов
+systemctl list-units --type=service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

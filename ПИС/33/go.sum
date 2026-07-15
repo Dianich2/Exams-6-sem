@@ -1,0 +1,4 @@
+github.com/dianich2/jsonrpc2 v0.0.0-20260417053811-03f9e3688558 h1:b7aDo75ljhrbKDjMRvFUr1KMaLuzqnGgam/azogmcno=
+github.com/dianich2/jsonrpc2 v0.0.0-20260417053811-03f9e3688558/go.mod h1:7W/nfoY+t7h2ovDbnZ6XbjAg634TuYH4wD0H7ESbKzk=
+github.com/gorilla/mux v1.8.1 h1:TuBL49tXwgrFYWhqrNgrUNEY92u81SPhu7sTdzQEiWY=
+github.com/gorilla/mux v1.8.1/go.mod h1:AKf9I4AEqPTmMytcMc0KkNouC66V3BtZ4qD5fmWSiMQ=

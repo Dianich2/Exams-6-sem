@@ -1,0 +1,20 @@
+// ставим пакетики
+go get golang.org/x/oauth2
+go get golang.org/x/oauth2/github
+go get github.com/gorilla/mux
+
+// затем идем на гихаб
+в Settings - Developer Settings - OAuth Apps
+
+Test OAuth
+http://localhost:3000
+http://localhost:3000/callback
+
+// далее мы получим там 
+Client ID
+Client Secret
+
+// их нужно сохранить как переменные окружения(ну тут естественно подставлям свои) 
+export GITHUB_CLIENT_ID="client_id"
+export GITHUB_CLIENT_SECRET="client_secret"
+

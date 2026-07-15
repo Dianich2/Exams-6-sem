@@ -1,0 +1,44 @@
+// создаем go-приложение для экземпляра сервера
+
+// собираем его через WSL (так будет удобнее, чем писать всякие переменные окружения)
+go build -o server-go
+
+// создаем dockerfile для создания образа нашего приложения(прилагается со всем остальным добром)
+
+// создаем приложение для Ocelot(удобно через WSL)
+dotnet new web -n ocelot
+
+// редактируем файлик .csproj (он тоже прилагается)
+
+// ну и редактируем сам файлик Program.cs (нам нужно подключить там конфиг для ocelot и также вообще добавить в сервисы ocelot; файлик также прилагается)
+
+// создаем файлик ocelot.json (как раз, который мы подключили в Program.cs) и там пропишем всю конфигурацию ocelot
+
+// создаем dockerfile для ocelot (тоже прилагается)
+
+// создаем файлик docker-compose.yml(упрощаем себе жизнь; тоже прилагается)
+
+// запускаем наши контейнеры(или же без -d, чтобы не в фоне (это на следующий раз docker compose up))
+docker compose up --build -d
+
+// типы баланисировщиков
+
+"LoadBalancerOptions": {
+    "Type": "RoundRobin"
+}
+
+"LoadBalancerOptions": {
+    "Type": "NoLoadBalancer"
+}
+
+"LoadBalancerOptions": {
+    "Type": "CookieStickySessions",
+    "Key": "SESSIONID",
+    "Expiry": 60000
+}
+
+
+// проверка(можно через postman)
+http://localhost:40000/api/inf
+
+// отправляем для проверки куки GatewayNode=user3

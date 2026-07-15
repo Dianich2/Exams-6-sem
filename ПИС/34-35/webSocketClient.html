@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="msg"></div>
+        <script>
+            const socket = new WebSocket("ws://localhost:3000/ws?clientName=browserClient");
+            const msgDiv = document.getElementById("msg");
+            socket.onopen = () =>{
+                let curCount = 0;
+
+                const intervalMsg = setInterval(() =>{
+                    if(curCount >= 5){
+                        clearInterval(intervalMsg);
+                        socket.close(1000, "bye");
+                        return;
+                    }
+                    socket.send("browserClient message");
+                    curCount++;
+                }, 1000);
+            };
+
+            socket.onmessage = (e) =>{
+                const el = document.createElement("p");
+                el.textContent = e.data;
+                msgDiv.appendChild(el);
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+services:
+  service1:
+    build: ./back-go-ocelot
+    environment:
+      SERVICE_NAME: service1
+
+  service2:
+    build: ./back-go-ocelot
+    environment:
+      SERVICE_NAME: service2
+
+  service3:
+    build: ./back-go-ocelot
+    environment:
+      SERVICE_NAME: service3
+
+  ocelot:
+    build: ./ocelot
+
+    ports:
+      - "40000:40000"
+
+    depends_on:
+      - service1
+      - service2
+      - service3
+    environment:
+     ASPNETCORE_URLS: http://+:40000 

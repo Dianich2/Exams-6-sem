@@ -1,0 +1,32 @@
+services:
+  back-go:
+    build: ./back-go
+    container_name: proxy-back-go
+    networks:
+      - proxy-net
+
+  nginx:
+    image: nginx:latest
+    container_name: proxy-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - back-go
+    networks:
+      - proxy-net
+
+  squid:
+    image: ubuntu/squid:latest
+    container_name: proxy-squid
+    ports:
+      - "3128:3128"
+    volumes:
+      - ./squid/squid.conf:/etc/squid/squid.conf:ro
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    driver: bridge

@@ -1,0 +1,149 @@
+basePath: /
+definitions:
+  main.Celebrity:
+    properties:
+      fullName:
+        type: string
+      id:
+        type: integer
+      nationality:
+        type: string
+      reqPhotoPath:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: Celebrities через Oracle
+  title: Celebrities REST API
+  version: "1.0"
+paths:
+  /Celebrities:
+    post:
+      consumes:
+      - application/json
+      description: Новый celebrity
+      parameters:
+      - description: Celebrity data
+        in: body
+        name: celebrity
+        required: true
+        schema:
+          $ref: '#/definitions/main.Celebrity'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Celebrity'
+        "500":
+          description: Server error
+          schema:
+            type: string
+      summary: Добавить celebrity
+      tags:
+      - Celebrities
+  /Celebrities/{id}:
+    delete:
+      description: Удаляет celebrity
+      parameters:
+      - description: Celebrity ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Celebrity'
+        "404":
+          description: Celebrity not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      summary: Удалить celebrity
+      tags:
+      - Celebrities
+    get:
+      description: Возвращает celebrity по id
+      parameters:
+      - description: Celebrity ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Celebrity'
+        "404":
+          description: Celebrity not found
+          schema:
+            type: string
+      summary: Получить celebrity по id
+      tags:
+      - Celebrities
+    put:
+      consumes:
+      - application/json
+      description: Обновляет celebrity
+      parameters:
+      - description: Celebrity ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Celebrity data
+        in: body
+        name: celebrity
+        required: true
+        schema:
+          $ref: '#/definitions/main.Celebrity'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Celebrity'
+        "404":
+          description: Celebrity not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      summary: Обновить celebrity
+      tags:
+      - Celebrities
+  /Celebrities/All:
+    get:
+      description: Возвращает всех celebrities
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Celebrity'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Получить всех celebrities
+      tags:
+      - Celebrities
+swagger: "2.0"

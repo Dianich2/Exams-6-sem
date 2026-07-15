@@ -1,0 +1,36 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/inf",
+      "UpstreamHttpMethod": ["GET"],
+
+      "DownstreamPathTemplate": "/inf",
+      "DownstreamScheme": "http",
+
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service1",
+          "Port": 3000
+        },
+        {
+          "Host": "service2",
+          "Port": 3000
+        },
+        {
+          "Host": "service3",
+          "Port": 3000
+        }
+      ],
+
+      "LoadBalancerOptions": {
+        "Type": "CookieStickySessions",
+        "Key": "GatewayNode",
+        "Expiry": 4000
+      }
+    }
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:40000"
+  }
+}

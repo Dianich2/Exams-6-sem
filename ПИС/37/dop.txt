@@ -1,0 +1,27 @@
+// получаем всех
+{
+    "query":"query { celebrities { id fullName nationality reqPhotoPath } }"
+}
+
+// получаем по id
+{
+    "query":"query { celebrity(id: 44) { id fullName nationality reqPhotoPath } }"
+}
+
+// добавляем
+{
+  "query": "mutation { addCelebrity(fullName: \"Test\", nationality: \"Test\", reqPhotoPath: \"0\") { id fullName nationality reqPhotoPath } }"
+}
+
+// обновляем
+{
+  "query": "mutation { updateCelebrity(id:63, fullName: \"Test2\", nationality: \"Test2\", reqPhotoPath: \"0\") { id fullName nationality reqPhotoPath } }"
+}
+
+// удаляем
+{
+  "query": "mutation { deleteCelebrity(id:63) { id fullName nationality reqPhotoPath } }"
+}
+
+
+
